@@ -3,10 +3,10 @@
 # 预览
 <br>前台页面<br>
 <img src="https://github.com/codersw/project/blob/master/images/1.png"/><br>
-<img src="https://github.com/codersw/project/blob/master/images/2.jpg"/><br>
-<img src="https://github.com/codersw/project/blob/master/images/3.jpg"/><br>
-<img src="https://github.com/codersw/project/blob/master/images/4.jpg"/><br>
-<img src="https://github.com/codersw/project/blob/master/images/5.jpg"/><br>
-<img src="https://github.com/codersw/project/blob/master/images/6.jpg"/><br>
+<img src="https://github.com/codersw/project/blob/master/images/2.png"/><br>
+<img src="https://github.com/codersw/project/blob/master/images/3.png"/><br>
+<img src="https://github.com/codersw/project/blob/master/images/4.png"/><br>
+<img src="https://github.com/codersw/project/blob/master/images/5.png"/><br>
+<img src="https://github.com/codersw/project/blob/master/images/6.png"/><br>
 <br>后台页面<br>
-<img src="https://github.com/codersw/project/blob/master/images/7.jpg"/><br>
+<img src="https://github.com/codersw/project/blob/master/images/7.png"/><br>
