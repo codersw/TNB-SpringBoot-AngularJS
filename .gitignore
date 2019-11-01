@@ -3,3 +3,4 @@
 .idea/vcs.xml
 src/main/resources/static/js/kindeditor-4.1.10/attached/
 target/
+logs/
