@@ -10,3 +10,8 @@
 <img src="https://github.com/codersw/project/blob/master/images/6.png"/><br>
 <br>后台页面<br>
 <img src="https://github.com/codersw/project/blob/master/images/7.png"/><br>
+# 环境配置
+<br>sql脚本<br>
+<img src="https://github.com/codersw/project/blob/master/images/8.png"/><br>
+<br>系统参数<br>
+<img src="https://github.com/codersw/project/blob/master/images/9.png"/><br>
