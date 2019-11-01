@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "/include/admin/head.html"/>
+</head>
+<body style="background: white;">
+    <div class="wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb panel">
+                    <li><a href="${base}/admin/index"><i class="fa fa-home"></i>首页</a></li>
+                    <li><a>系统设置</a></li>
+                    <li class="active">角色权限</li>
+                </ul>
+            </div>
+        </div>
+        <div class="mail-box">
+            <aside class="mail-nav mail-nav-bg-color"
+                   style="background-color: #EFF0F4;">
+                <header class="header" style="background-color: #EFF0F4;">
+                    <h4>角色列表</h4>
+                </header>
+                <div class="mail-nav-body">
+                    <ul class="nav nav-pills nav-stacked mail-navigation" id="roleList">
+                        <#if roles?exists>
+                            <#list roles as role>
+                                <li id="${role.id}">
+                                    <a href="#" > <i class="fa fa-file-text-o"></i>${role.roleName}</a>
+                                </li>
+                            </#list>
+                        </#if>
+                    </ul>
+                </div>
+            </aside>
+            <section class="mail-box-info" style="padding:0;">
+                <div class="panel-body" style="padding-left: 0;padding-right: 0;">
+                    <input type="hidden" id="roleId" />
+                    <p>点击左侧角色进行权限管理...</p>
+                    <ul id="treeCheck" class="ztree" style="margin-top: 15px;" >
+
+                    </ul>
+                    <button class="btn btn-primary" id="save" >保存</button>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <#include "/include/admin/foot.html"/>
+    <script type="text/javascript">
+        $(function(){
+            //动态点击事件
+            $("#roleList").on("click","li",function() {
+                var roleId = $(this).attr("id");
+                $("#roleId").val(roleId);
+                loadZtreeCheck(roleId);
+            });
+            //保存所选
+            $("#save").click(function(){
+                var roleId=$("#roleId").val();
+                if(!roleId){
+                    alert("请选择一种角色");
+                    return;
+                }
+                var zTree = $.fn.zTree.getZTreeObj("treeCheck");//换成实际的图层的id
+                var changedNodes = zTree.getChangeCheckedNodes(); //获取改变的全部结点
+                var ids=[];
+                for(var i=0;i<changedNodes.length;i++){
+                    var treeNode = changedNodes[i];
+                    if(treeNode.checked==true){
+                        ids.push(treeNode.id);
+                    }
+                }
+                showLoading();
+                post("${base}/admin/system/saveRoleMenu",{roleId:roleId,ids:ids.toString()},function(data){
+                    hideLoading();
+                    if(data.status=="success"){
+                        getRoleMenu(roleId);
+                    }
+                });
+            });
+        });
+
+        /**
+         * 加载 ztree checkbox
+         * @param roleId
+         */
+        function loadZtreeCheck(roleId){
+            //默认配置
+            var setting = {
+                check: {
+                    enable: true
+                },
+                data: {
+                    simpleData: {
+                        enable: true
+                    }
+                }
+            };
+
+            var zNodes =[];
+            showLoading();
+            post("${base}/admin/system/selectMenu",{roleId:""},function(data){
+                hideLoading();
+                if(data.status=="success"&&data.dataRows.length>0){
+                    for(var i=0;i<data.dataRows.length;i++){
+                        zNodes[i] = { id:data.dataRows[i].id, name:data.dataRows[i].name,pId:data.dataRows[i].parentId,open:true};
+                    }
+                    //初始化
+                    $.fn.zTree.init($("#treeCheck"), setting, zNodes);
+                    getRoleMenu(roleId);
+                }
+            });
+
+            function setCheck() {
+                var zTree = $.fn.zTree.getZTreeObj("treeCheck"),
+                        py = $("#py").attr("checked")? "p":"",
+                        sy = $("#sy").attr("checked")? "s":"",
+                        pn = $("#pn").attr("checked")? "p":"",
+                        sn = $("#sn").attr("checked")? "s":"",
+                        type = { "Y":py + sy, "N":pn + sn};
+                zTree.setting.check.chkboxType = type;
+                showCode('setting.check.chkboxType = { "Y" : "' + type.Y + '", "N" : "' + type.N + '" };');
+            }
+
+            var code;
+            function showCode(str) {
+                if (!code) code = $("#code");
+                code.empty();
+                code.append("<li>"+str+"</li>");
+            }
+
+        }
+
+        /**
+         * 加载选中对应的菜单
+         * @param roleId
+         */
+        function getRoleMenu(roleId){
+            showLoading();
+            post("${base}/admin/system/selectMenu",{roleId:roleId},function(data){
+                hideLoading();
+                if(data.status=="success"&&data.dataRows.length>0){
+                    var zTree = $.fn.zTree.getZTreeObj("treeCheck");
+                    for(var i=0;i<data.dataRows.length;i++){
+                        var node = zTree.getNodeByParam("id",data.dataRows[i].id);//通过节点id获取节点
+                        node.checked = true;
+                        zTree.updateNode(node); //更新ztree
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

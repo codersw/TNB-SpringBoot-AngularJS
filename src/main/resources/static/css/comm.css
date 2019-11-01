@@ -1,0 +1,37 @@
+/*!
+ * 后台通用css
+ */
+.title{
+    margin-left: 25px;
+    line-height: 40px;
+}
+.control-label{
+    margin-top: 8px;
+}
+.modal-dialog .form-group{
+    height: 36px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+.checkbox{
+    display: none;
+}
+.checkspan{
+    background-color:#fff;
+    border:1px solid rgba(0,0,0,0.15);
+    display:inline-block;
+    height:16px;
+    margin-right:10px;
+    margin-top:-1px;
+    vertical-align:middle;
+    width:16px;
+    line-height:1;
+}
+.checkbox:checked + .checkspan:after{
+    background-color:#57ad68;
+    content:"";
+    display:inline-block;
+    height:12px;
+    margin:1px;
+    width:12px
+}

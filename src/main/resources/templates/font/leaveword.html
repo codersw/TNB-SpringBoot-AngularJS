@@ -1,0 +1,353 @@
+<#assign base=request.contextPath />
+<#assign stxbase = base+"/static"/>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11;IE=9;IE=8;IE=7" />
+    <title>在线留言</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="${stxbase}/css/common.css" rel="stylesheet" type="text/css" />
+    <link href="${stxbase}/css/wumainmenu.css" rel="stylesheet" type="text/css" />
+    <link href="${stxbase}/css/pagetitlemenu.css" rel="stylesheet" type="text/css" />
+    <link href="${stxbase}/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="${stxbase}/css/feedbackform.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="${stxbase}/js/base.js"></script>
+    <script type="text/javascript" src="${stxbase}/js/common.js"></script>
+    <script type="text/javascript" src="${stxbase}/js/form.js"></script>
+    <script type="text/javascript" src="${stxbase}/js/blockui.js"></script>
+    <script type="text/javascript" src="${stxbase}/js/jquery.SuperSlide.js"></script>
+    <script type="text/javascript" src="${stxbase}/js/jquery.w.js"></script>
+    <script type="text/javascript" src="${stxbase}/js/velocity.min.js"></script>
+    <script type="text/javascript" src="${stxbase}/js/layer/layer.js"></script>
+</head>
+<body style='background:transparent'>
+<div id='page' style='margin:auto;clear:both;overflow:hidden;position:relative;width:100%;'>
+    <div id='contain' style=' background:transparent;margin:0px auto;padding:0px'>
+
+        <div id='top' style=' height:415px;background:url(${stxbase}/images/top.jpg) left top repeat-x transparent'>
+            <div style='margin:0 auto;position:relative;width:1200px;'>
+                <div id='pdv_17829' class='pdv_class'   style='width:770px;height:99px;top:36px;left:430px; z-index:1'>
+                    <div id='spdv_17829' class='pdv_top' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+                        <div id="menumain" class="wumainmenu wumainmenu-s0">
+                            <div class="bg"></div>
+                            <div class="line"></div>
+                            <div class="bd">
+                                <ul>
+
+                                    <li class="n1">
+                                        <dl><dt>
+                                            <a href="${base}/font/index" ><span></span>首页 </a>
+                                        </dt><dd></dd></dl>
+                                    </li>
+
+                                    <li class="n2">
+                                        <dl><dt>
+                                            <a href="${base}/font/aboutus" ><span></span>关于我们</a>
+                                        </dt><dd></dd></dl>
+                                    </li>
+
+                                    <li class="n3">
+                                        <dl><dt>
+                                            <a href="${base}/font/news" ><span></span>新闻中心</a>
+                                        </dt><dd></dd></dl>
+                                    </li>
+
+                                    <li class="n4">
+                                        <dl><dt>
+                                            <a href="${base}/font/product" ><span></span>产品展示</a>
+                                        </dt><dd></dd></dl>
+                                    </li>
+                                    <li class="n5">
+                                        <dl><dt>
+                                            <a href="${base}/font/leaveword" ><span></span>在线留言</a>
+                                        </dt><dd></dd></dl>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <script>
+                            $(function(){
+                                $("#pdv_17829 dt a span").each(function(){
+                                    var p = $(this).parent().position();
+                                    $(this).css(p);
+                                });
+                                $("#pdv_17829 .n"+parseInt('0')).addClass("cur");
+                                $("#pdv_17829 dd").css("opacity", '0');
+                                if('1' != 1) return;
+                                $("#pdv_17829 dd").each(function(){
+                                    if(this.innerHTML == '') $(this).remove();
+                                });
+
+                                if(getCookie("PLUSADMIN")=="SET"){return false}
+
+                                var plus = {};
+                                var tm;
+                                var cur;
+                                for(var i in plus) {
+                                    plus[i] = $("#pdv_"+plus[i]).size() ? $("#pdv_"+plus[i]) : $(".pdv_class[title="+plus[i]+"]");
+                                    plus[i].hide().hover(function(){
+                                        clearTimeout(tm);
+                                        cur = this;
+                                    }, hide);
+                                    plus[i].children().removeClass("pdv_top");
+                                }
+                                function hide(){
+                                    tm = setTimeout(function(){
+                                        $(cur).hide();
+                                    }, 500);
+                                }
+                                $("#pdv_17829 li").hover(function(){
+                                    clearTimeout(tm);
+                                    $(cur).hide();
+                                    var i = $(this).index()+1;
+                                    if(plus[i]) {
+                                        cur = plus[i].show();
+                                        return;
+                                    }
+                                    $("dd", this).show();
+                                }, function(){
+                                    hide();
+                                    $("dd", this).hide();
+                                });
+                            })
+                        </script>
+                    </div>
+                    </div>
+                </div>
+            </div><div style='margin:0 auto;position:relative;width:1200px;'>
+            <div id='pdv_17833' class='pdv_class'  title='广告位' style='width:501px;height:33px;top:0px;left:0px; z-index:4'>
+                <div id='spdv_17833' class='pdv_top' style='overflow:hidden;width:100%;height:100%'>
+                    <div class='pdv_border' style='border:0'>
+                        <span style="line-height:36px;color:#FFF;">${projectConfig.name},咨询电话：${projectConfig.phone}</span>
+                    </div>
+                </div>
+            </div>
+        </div><div style='margin:0 auto;position:relative;width:1200px;'>
+            <div id='pdv_17832' class='pdv_class'  title='' style='width:405px;height:73px;top:47px;left:0px; z-index:5'>
+                <div id='spdv_17832' class='pdv_top' style='overflow:hidden;width:100%;height:100%'>
+                    <div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
+                        <div style="height:25px;margin:1px;display:none;background:;">
+                            <div style="float:left;margin-left:6px;line-height:25px;font-weight:bold;color:">
+
+                            </div>
+                            <div style="float:right;margin-right:10px;display:none">
+                                <a href="-1" style="line-height:25px;color:">更多</a>
+                            </div>
+                        </div>
+                        <div style="padding:0px">
+                            <a href="#"><img src="${stxbase}/images/logo.jpg" border="0" /></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><div style='margin:0 auto;position:relative;width:1200px;'>
+            <div id='pdv_17834' class='pdv_class'  title='全屏通栏广告背景' style='width:1200px;height:277px;top:136px;left:0px; z-index:6'>
+                <div id='spdv_17834' class='pdv_top' style='overflow:inherit;width:100%;height:100%'><div class='pdv_border' style='border:0'><div class="wuDiyBG" style="position: relative; min-height: 10px; height: 277px;">
+                    <div class="bg" style="position: absolute; left:50%; margin-left: -960px;
+ width: 1920px; height: 100%;background-image:url(${stxbase}/images/1518174063.jpg); background-color:transparent;background-position:left top; background-repeat: no-repeat;"></div>
+                </div></div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id='content' style='width:1200px;height:575px;background:transparent;margin:0px auto'>
+            <div id='pdv_17837' class='pdv_class'  title='给我留言' style='width:927px;height:573px;top:0px;left:273px; z-index:7'>
+                <div id='spdv_17837' class='pdv_content' style='overflow:hidden;width:100%;height:100%'>
+                    <div class='pdv_border' style='border:0'>
+                    <div  id="notice" class="noticediv"></div>
+                    <div style='border-bottom:1px #ddd solid;font-size:25px;line-height:42px;margin-bottom:25px;'>留言反馈</div>
+                    <form id="feedbacksmallform" method="post" action="" name="gform" style="padding:50px;padding-top:20PX;">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="3" >
+                            <tr>
+                                <td width="80" align="right">留言主题：</td>
+                                <td>
+                                    <input type="text" name="title" id="title" value="" class="input" style="width:399px" />
+                                    <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
+                            </tr>
+                            <tr>
+                                <td width="80" align="right">留言内容：</td>
+                                <td>
+                                    <textarea name="content"  rows="10"  class="textarea" style="width:399px" ></textarea>
+                                    <font style='color:red'>*</font>
+                                    <div style="padding-top:3px;color:#666"></div>  </td>
+                            </tr>
+                            <tr>
+                                <td width="80" align="right">您的名字：</td>
+                                <td>
+                                    <input type="text" name="name" id="name" value="" class="input" style="width:399px" />
+                                    <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
+                            </tr>
+                            <tr>
+                                <td width="80" align="right">联系电话：</td>
+                                <td>
+                                    <input type="text" name="phone" id="phone" value="" class="input" style="width:399px" />
+                                    <font style='color:red'>*</font> <div style="padding-top:3px;color:#666"></div>  </td>
+                            </tr>
+
+                            <tr>
+                                <td width="80" align="right">QQ：</td>
+                                <td>
+                                    <input type="text" name="qq" id="qq" value="" class="input" style="width:399px" />
+                                    <div style="padding-top:3px;color:#666"></div>  </td>
+                            </tr>
+
+                            <tr>
+                                <td width="80" align="right">验 证 码：</td>
+                                <td><div style="height:28px;white-space:nowrap;float:left;margin-right:1px">
+                                    <input type="text" name="code"  id="code" style="width:39px"  class="input" />
+                                </div>
+                                    <div style="height:28px;white-space:nowrap;float:left">
+                                        <img id="codeimg" src="${base}/verifyCode" width="60" height="20" style="border:1px #dddddd solid">
+                                    </div>
+                                    <span id="getImgCode" style="cursor:pointer;margin-left:10px;line-height:20px">看不清？更换一张</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="80" align="right"></td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="80" align="right">&nbsp;</td>
+                                <td height="30">
+                                    <input type="button" name="Submit" id="Submit" value="提交" class="submit">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+
+                </div>
+                </div>
+            </div>
+        </div>
+        <div id='bottom' style='width:1200px;height:162px;background:left top rgb(128, 199, 95)'>
+
+            <div id='pdv_17972' class='pdv_class'  title='脚注信息' style='width:1200px;height:95px;top:38px;left:0px; z-index:2'>
+                <div id='spdv_17972' class='pdv_bottom' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+                  <span style="font-size:14px;line-height:1.5;color:#FFFFFF;">
+                        <p style="text-align:center;">
+                            <span style="color:#FFFFFF;font-size:14px;">地址: ${projectConfig.address} 电话：${projectConfig.phone} 邮箱：${projectConfig.email}</span>
+                        </p>
+                        <div>
+                            <p style="text-align:center;">
+                                <span style="color:#FFFFFF;font-size:14px;">${projectConfig.content}</span>
+                            </p>
+                        </div>
+                        <div style="text-align:center;">
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+            <div id='pdv_17970' class='pdv_class'  title='广告位' style='width:60px;height:60px;top:45px;left:854px; z-index:8'>
+                <div id='spdv_17970' class='pdv_bottom' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+                    <script>
+                        $(function(){
+                            if('1' != 1) return;
+                            animate("#spdv_17970", {direction: '下', opacity: '1', distance: '200'
+                                , rotation: '不旋转', scale: '1', delay: '0', duration: '600', easing: 'swing'});
+                        })
+                    </script>
+                </div>
+                </div>
+            </div>
+            <div id='pdv_17971' class='pdv_class'  title='友情链接' style='width:1198px;height:42px;top:0px;left:2px; z-index:9'>
+                <div id='spdv_17971' class='pdv_bottom' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+                    <ul style="display:table;margin:10px auto;">
+                        <li style="color:#fff;list-style-type:none;text-align:center;float:left;*float:none;*display:inline;*zoom:1;font-size:14px;line-height:28px;height:28px;">
+                            友情链接：
+                        </li>
+
+                        <#if friendLinkList?exists>
+                            <#list friendLinkList as friendLink>
+                                <li style="list-style-type:none;text-align:center;float:left;*float:none;*display:inline;*zoom:1;margin-right:20px;height:28px;">
+                                    <a href="${friendLink.link}" target="_self" style="color:#fff;
+										font-size:14px;line-height:28px;">${friendLink.name}</a>
+                                </li>
+                            </#list>
+                        </#if>
+
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div><div id='bodyex'>
+
+</div>
+    <div id='topex' style='width:100%;height:415px;background:url(${stxbase}/images/top.jpg) left top repeat-x transparent'>
+    </div>
+    <div id='contentex' style='display:none;width:100%;height:575px;background:transparent'>
+    </div>
+    <div id='bottomex' style='width:100%;height:162px;background:left top rgb(128, 199, 95)'>
+    </div>
+    <div id='advsex'></div>
+</div>
+</body>
+<script>
+    $(function () {
+        $("#getImgCode").click(function () {
+            $("#codeimg").attr("src","${base}/verifyCode?"+new Date().getTime());
+        });
+        $("#Submit").click(function () {
+           var title= $("#title").val().trim().replace(/<script.*?>.*?<\/script>/ig, '');
+           if(!title){
+               layer.alert("请填写主题");
+               return;
+           }
+           var content=$("textarea[name='content']").val().trim().replace(/<script.*?>.*?<\/script>/ig, '');
+           if(!content){
+               layer.alert("请填写内容");
+               return;
+           }
+           var name=$("#name").val().trim().replace(/<script.*?>.*?<\/script>/ig, '');
+           if(!name){
+               layer.alert("请填写姓名");
+               return;
+           }
+           var phone=$("#phone").val().trim().replace(/<script.*?>.*?<\/script>/ig, '');
+           if(!phone){
+               layer.alert("请填写电话");
+               return;
+           }
+           var qq=$("#qq").val().trim().replace(/<script.*?>.*?<\/script>/ig, '');
+           var code=$("#code").val().trim().replace(/<script.*?>.*?<\/script>/ig, '');
+            if(!code){
+                layer.alert("请填写验证码");
+                return;
+            }
+           var load=layer.load(0, {shade: [0.8, '#393D49']});
+           $.ajax({
+              type:"post",
+              url:"${base}/font/insertLeave",
+              data:{
+                  title:title,
+                  content:content,
+                  name:name,
+                  phone:phone,
+                  qq:qq,
+                  code:code
+              },
+              success:function (data) {
+                 layer.close(load);
+                 if(data.status=="success"){
+                    layer.alert("留言成功");
+                    setTimeout(function () {
+                        window.location.reload();
+                    },2000)
+                 }else {
+                     layer.alert(data.msg);
+                     $("#codeimg").attr("src","${base}/verifyCode?"+new Date().getTime());
+                 }
+              },
+              error:function (data) {
+                  layer.close(load);
+              }
+           });
+        })
+    })
+</script>
+</html>

@@ -1,0 +1,185 @@
+<#assign base=request.contextPath />
+<!DOCTYPE html>
+<html>
+<head>
+    <#include "/include/admin/head.html"/>
+</head>
+<body style="background: white;" ng-app="mainApp" ng-controller="ctrl">
+<div class="row">
+    <div class="col-md-12">
+        <!--breadcrumbs start -->
+        <ul class="breadcrumb panel">
+            <li><a href="${base}/admin/index"><i class="fa fa-home"></i>首页</a></li>
+            <li><a href="#">用户管理</a></li>
+            <li class="active">用户管理</li>
+        </ul>
+        <!--breadcrumbs end -->
+    </div>
+</div>
+<div class="mail-box">
+    <div class="btn-toolbar" style="margin-left: 10px;">
+        <div class="btn-group">
+            <button class="btn btn-primary" ng-click="addInfo()" type="button" >
+                <i class="fa fa-plus"></i>新建
+            </button>
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-primary" ng-click="deleteInfoes()" type="button" >
+                <i class="fa fa-minus"></i>批量删除
+            </button>
+        </div>
+    </div>
+    <div class="panel-body" >
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+            <tr>
+                <th style="width:1%;" >
+                    <label class="checklabel">
+                        <input class="checkbox" type="checkbox" id="checkAll" name="checkAll">
+                        <span class="checkspan"></span>
+                    </label>
+                </th>
+                <th>姓名</th>
+                <th>登录名</th>
+                <th>用户角色</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="results">
+            <tr ng-repeat="data in dataRows">
+                <td>
+                    <label class="checklabel">
+                        <input class="checkbox" type="checkbox" name="checkbox" value="{{data.id}}" id="{{data.id}}">
+                        <span class="checkspan"></span>
+                    </label>
+                </td>
+                <td ng-bind="data.name"></td>
+                <td ng-bind="data.loginName"></td>
+                <td ng-bind="data.role.roleName"></td>
+                <td>
+                    <button ng-click="lookInfo(data)" class="btn-xs btn-success" type="button"><i class="fa fa-eye"></i>查看</button>
+                    <button ng-click="editInfo(data)" class="btn-xs btn-info" type="button"><i class="fa fa-edit"></i>修改</button>
+                    <button ng-click="deleteInfo(data)" class="btn-xs btn-danger " type="button"><i class="fa fa-trash-o"></i>删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row form-inline">
+            <div class="col-md-8">
+                <uib-pagination
+                        ng-model="currentPage"
+                        total-items="total"
+                        items-per-page="rows"
+                        max-size="maxSize"
+                        ng-change="pageChanged()"
+                        boundary-link-numbers="false"
+                        force-ellipses="true"
+                        boundary-links="true"
+                        first-text="首页"
+                        last-text="末页"
+                        previous-text="上一页"
+                        next-text="下一页">
+                </uib-pagination>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="z-index: 1041;width:650px;height:auto;overflow: auto;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <form role="form" id="myForm" ng-submit="saveInfo()">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" size="200"
+                                   required  id="name" name="name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">登录名</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" size="200"
+                                   required  id="loginName" name="loginName" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">用户角色</label>
+                        <div class="col-md-6 col-sm-6">
+                            <select  class="form-control" id="roleId" name="roleId"  required >
+                                <option value="">请选择</option>
+                                <#if userRoleList?exists>
+                                    <#list userRoleList as role>
+                                        <option value="${role.id}">${role.roleName}</option>
+                                    </#list>
+                                </#if>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">手机号码</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" size="200"
+                                   required  id="phoneNum" name="phoneNum" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">邮箱</label>
+                        <div class="col-sm-6">
+                            <input type="email" class="form-control" size="200"
+                                   required  id="eMail" name="eMail" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">性别</label>
+                        <div class="col-md-6 col-sm-6">
+                            <select  class="form-control" id="sex" name="sex"  required >
+                                <option value="">请选择</option>
+                                <option value="1">男</option>
+                                <option value="2">女</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">头像选择</label>
+                        <input class="input-large" ngf-select type="file" ng-model="file" name="file" onchange="angular.element(this).scope().preview(this)" readonly="readonly" />
+                    </div>
+                    <div class="form-group" style="height: 210px;">
+                        <label class="col-md-2 control-label">头像预览</label>
+                        <div><img id="img" src="" onerror='this.src="${base}/static/images/danshengou.jpg"' style="width: 200px;height: 200px;padding: 5px;margin-left: 15px;"/></div>
+                    </div>
+                    <input type="hidden" id="id" name="id" />
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            关闭
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            确认
+                        </button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+<#include "/include/admin/foot.html"/>
+<script type="text/javascript">
+    var loadUrl="${base}/admin/user/userInfoList";
+    var deleteUrl="${base}/admin/user/deleteUser?type=UserInfo";
+    var deleteMoreUrl="${base}/admin/user/deleteMoreUser?type=UserInfo"
+    var editUrl="${base}/admin/user/editUserInfo";
+    var addUrl="${base}/admin/user/insertUserInfo";
+    var editorName=null;//富文本框的name 没有设置为null
+    var fileName="file";//文件上传的name 没有设置为null
+</script>
+</body>
+</html>
+
+
+
+

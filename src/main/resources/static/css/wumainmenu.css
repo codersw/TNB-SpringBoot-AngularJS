@@ -1,0 +1,33 @@
+body{overflow-x: hidden; position: relative;}
+.wumainmenu{position: relative; zoom:1; font-family: "微软雅黑";}
+.wumainmenu .bg,
+.wumainmenu .line{background: #005BAC;  position: absolute; width: 100%; left: 0;}
+.wumainmenu-s1 .bg,
+.wumainmenu-s1 .line{
+	width: 3000px; left: 50%; margin-left: -1500px;
+}
+.wumainmenu .bg{top: 0; height: 100%;}
+.wumainmenu .line{bottom: 0;}
+.wumainmenu dl,
+.wumainmenu dd{margin: 0;}
+.wumainmenu .bd{position: relative;}
+.wumainmenu ul{ overflow: hidden;}
+.wumainmenu li{float:left; width: 150px; }
+.wumainmenu dt a{border-right: 1px solid #004587;}
+.wumainmenu a{display: block;  text-align: center; text-decoration: none;
+line-height: 50px; white-space: nowrap; color: #fff; font-size: 14px; zoom: 1;}
+.wumainmenu a:hover{background: #ff7e00;}
+
+
+.wumainmenu dt{overflow: hidden;}
+.wumainmenu dt a span{line-height: 20px; color: #B9CEDF; display: block;
+ text-align:center; font-size: 12px; width: 100%; font-family: Arial; position: absolute;}
+
+
+.wumainmenu dd{position: absolute; top: 100%; background: #005BAC; _zoom: 1; display: none; box-sizing: border-box;}
+.wumainmenu dd a{line-height: 28px; font-size: 12px;}
+
+.fixedtop{
+	width: 100%; top: 0;
+	position: fixed !important;
+}

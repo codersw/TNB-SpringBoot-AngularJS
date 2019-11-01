@@ -1,0 +1,251 @@
+<#assign base=request.contextPath />
+<#assign stxbase = base+"/static"/>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11;IE=9;IE=8;IE=7" />
+    <title>新型生物源新农药取材自大蒜-企业形象成品网站</title>
+    <link href="${stxbase}/css/common.css" rel="stylesheet" type="text/css" />
+    <link href="${stxbase}/css/wumainmenu.css" rel="stylesheet" type="text/css" />
+    <link href="${stxbase}/css/pagetitlemenu.css" rel="stylesheet" type="text/css" />
+    <link href="${stxbase}/css/pagecontent.css" rel="stylesheet" type="text/css" />
+    <link href="${stxbase}/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="${stxbase}/css/newsclass.css" rel="stylesheet" type="text/css" />
+    <link href="${stxbase}/css/newscontent.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="${stxbase}/js/base.js"></script>
+    <script type="text/javascript" src="${stxbase}/js/common.js"></script>
+    <script type="text/javascript" src="${stxbase}/js/form.js"></script>
+    <script type="text/javascript" src="${stxbase}/js/blockui.js"></script>
+    <script type="text/javascript" src="${stxbase}/js/jquery.SuperSlide.js"></script>
+    <script type="text/javascript" src="${stxbase}/js/jquery.w.js"></script>
+    <script type="text/javascript" src="${stxbase}/js/velocity.min.js"></script>
+</head>
+<body style='background:transparent'>
+<div id='page' style='margin:auto;clear:both;overflow:hidden;position:relative;width:100%;'>
+    <div id='contain' style=' background:transparent;margin:0px auto;padding:0px'>
+
+        <div id='top' style=' height:415px;background:url(${stxbase}/images/top.jpg) left top repeat-x transparent'>
+            <div style='margin:0 auto;position:relative;width:1200px;'>
+                <div id='pdv_17783' class='pdv_class'   style='width:770px;height:99px;top:36px;left:430px; z-index:1'>
+                    <div id='spdv_17783' class='pdv_top' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+                        <div id="menumain" class="wumainmenu wumainmenu-s0">
+                            <div class="bg"></div>
+                            <div class="line"></div>
+                            <div class="bd">
+                                <ul>
+                                    <li class="n1">
+                                        <dl><dt>
+                                            <a href="${base}/font/index" ><span></span>首页 </a>
+                                        </dt><dd></dd></dl>
+                                    </li>
+
+                                    <li class="n2">
+                                        <dl><dt>
+                                            <a href="${base}/font/aboutus" ><span></span>关于我们</a>
+                                        </dt><dd></dd></dl>
+                                    </li>
+
+                                    <li class="n3">
+                                        <dl><dt>
+                                            <a href="${base}/font/news" ><span></span>新闻中心</a>
+                                        </dt><dd></dd></dl>
+                                    </li>
+
+                                    <li class="n4">
+                                        <dl><dt>
+                                            <a href="${base}/font/product" ><span></span>产品展示</a>
+                                        </dt><dd></dd></dl>
+                                    </li>
+                                    <li class="n5">
+                                        <dl><dt>
+                                            <a href="${base}/font/leaveword" ><span></span>在线留言</a>
+                                        </dt><dd></dd></dl>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                        <script>
+                            $(function(){
+                                $("#pdv_17783 dt a span").each(function(){
+                                    var p = $(this).parent().position();
+                                    $(this).css(p);
+                                });
+                                $("#pdv_17783 .n"+parseInt('0')).addClass("cur");
+                                $("#pdv_17783 dd").css("opacity", '0');
+                                if('1' != 1) return;
+                                $("#pdv_17783 dd").each(function(){
+                                    if(this.innerHTML == '') $(this).remove();
+                                });
+
+                                if(getCookie("PLUSADMIN")=="SET"){return false}
+
+                                var plus = {};
+                                var tm;
+                                var cur;
+                                for(var i in plus) {
+                                    plus[i] = $("#pdv_"+plus[i]).size() ? $("#pdv_"+plus[i]) : $(".pdv_class[title="+plus[i]+"]");
+                                    plus[i].hide().hover(function(){
+                                        clearTimeout(tm);
+                                        cur = this;
+                                    }, hide);
+                                    plus[i].children().removeClass("pdv_top");
+                                }
+                                function hide(){
+                                    tm = setTimeout(function(){
+                                        $(cur).hide();
+                                    }, 500);
+                                }
+                                $("#pdv_17783 li").hover(function(){
+                                    clearTimeout(tm);
+                                    $(cur).hide();
+                                    var i = $(this).index()+1;
+                                    if(plus[i]) {
+                                        cur = plus[i].show();
+                                        return;
+                                    }
+                                    $("dd", this).show();
+                                }, function(){
+                                    hide();
+                                    $("dd", this).hide();
+                                });
+                            })
+                        </script>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div style='margin:0 auto;position:relative;width:1200px;'>
+                <div id='pdv_17778' class='pdv_class'  title='广告位' style='width:501px;height:33px;top:0px;left:0px; z-index:2'>
+                <div id='spdv_17778' class='pdv_top' style='overflow:hidden;width:100%;height:100%'>
+                    <div class='pdv_border' style='border:0'>
+                        <span style="line-height:36px;color:#FFF;">${projectConfig.name},咨询电话：${projectConfig.phone}</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div style='margin:0 auto;position:relative;width:1200px;'>
+            <div id='pdv_17777' class='pdv_class'  title='' style='width:405px;height:73px;top:47px;left:0px; z-index:4'>
+                <div id='spdv_17777' class='pdv_top' style='overflow:hidden;width:100%;height:100%'>
+                    <div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
+                        <div style="height:25px;margin:1px;display:none;background:;">
+                            <div style="float:left;margin-left:6px;line-height:25px;font-weight:bold;color:">
+
+                            </div>
+                            <div style="float:right;margin-right:10px;display:none">
+                                <a href="-1" style="line-height:25px;color:">更多</a>
+                            </div>
+                        </div>
+                        <div style="padding:0px">
+                            <a href="#"><img src="${stxbase}/images/logo.jpg" border="0" /></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><div style='margin:0 auto;position:relative;width:1200px;'>
+            <div id='pdv_17774' class='pdv_class'  title='全屏通栏广告背景' style='width:1200px;height:277px;top:136px;left:0px; z-index:5'>
+                <div id='spdv_17774' class='pdv_top' style='overflow:inherit;width:100%;height:100%'><div class='pdv_border' style='border:0'><div class="wuDiyBG" style="position: relative; min-height: 10px; height: 277px;">
+                    <div class="bg" style="position: absolute; left:50%; margin-left: -960px;
+ width: 1920px; height: 100%;background-image:url(${stxbase}/images/1518111335.jpg); background-color:transparent;background-position:left top; background-repeat: no-repeat;"></div>
+                </div></div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id='content' style='width:1200px;height:264px;background:transparent;margin:0px auto'>
+            <div id='pdv_17784' class='pdv_class'  title='文章正文' style='width:927px;height:262px;top:0px;left:273px; z-index:9'>
+                <div id='spdv_17784' class='pdv_content' style='overflow:visible;width:100%;'><div class='pdv_border' style='border:0'>
+                    <div style='border-bottom:1px #ddd solid;font-size:25px;line-height:42px;margin-bottom:25px;'>文章详情</div>
+                    <div id="newscontent">
+                        <div class="newstitle">${data.title}</div>
+                        <div class="info">作者：${data.create.name} &nbsp;&nbsp; 发布于：${data.createDate?string("yyyy-MM-dd HH:mm:ss")}</div>
+                        <div id="memo" class="memo" style="display:block">
+                            <span style="color:#ff6600">摘要：</span>
+                            <#if data.content?length gt 300>
+                                ${data.content?substring(0,300)}....
+                                <#else>
+                                ${data.content}
+                            </#if>
+                        </div>
+                        <div id="con" class="con">
+                            <p style="text-indent:2em;">
+                                <img src="${base}${data.cover.filePath}" alt="" />
+                            </p>
+                            <p style="text-indent:2em;">
+                            ${data.content}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div id='bottom' style='width:1200px;height:162px;background:left top rgb(128, 199, 95)'>
+
+            <div id='pdv_17864' class='pdv_class'  title='脚注信息' style='width:1200px;height:95px;top:38px;left:0px; z-index:3'>
+                <div id='spdv_17864' class='pdv_bottom' style='overflow:hidden;width:100%;height:100%'>
+                    <div class='pdv_border' style='border:0'>
+                         <span style="font-size:14px;line-height:1.5;color:#FFFFFF;">
+							<p style="text-align:center;">
+								<span style="color:#FFFFFF;font-size:14px;">地址: ${projectConfig.address} 电话：${projectConfig.phone} 邮箱：${projectConfig.email}</span>
+							</p>
+							<div>
+								<p style="text-align:center;">
+									<span style="color:#FFFFFF;font-size:14px;">${projectConfig.content}</span>
+								</p>
+							</div>
+							<div style="text-align:center;">
+							</div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div id='pdv_17862' class='pdv_class'  title='广告位' style='width:60px;height:60px;top:45px;left:854px; z-index:7'>
+                <div id='spdv_17862' class='pdv_bottom' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+                    <script>
+                        $(function(){
+                            if('1' != 1) return;
+                            animate("#spdv_17862", {direction: '下', opacity: '1', distance: '200'
+                                , rotation: '不旋转', scale: '1', delay: '0', duration: '600', easing: 'swing'});
+                        })
+                    </script>
+                </div>
+                </div>
+            </div>
+            <div id='pdv_17863' class='pdv_class'  title='友情链接' style='width:1198px;height:42px;top:0px;left:2px; z-index:8'>
+                <div id='spdv_17863' class='pdv_bottom' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+                    <ul style="display:table;margin:10px auto;">
+                        <li style="color:#fff;list-style-type:none;text-align:center;float:left;*float:none;*display:inline;*zoom:1;font-size:14px;line-height:28px;height:28px;">
+                            友情链接：
+                        </li>
+
+                        <#if friendLinkList?exists>
+                            <#list friendLinkList as friendLink>
+                                <li style="list-style-type:none;text-align:center;float:left;*float:none;*display:inline;*zoom:1;margin-right:20px;height:28px;">
+                                    <a href="${friendLink.link}" target="_self" style="color:#fff;
+										font-size:14px;line-height:28px;">${friendLink.name}</a>
+                                </li>
+                            </#list>
+                        </#if>
+
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div><div id='bodyex'>
+
+</div>
+    <div id='topex' style='width:100%;height:415px;background:url(${stxbase}/images/top.jpg) left top repeat-x transparent'>
+    </div>
+    <div id='contentex' style='display:none;width:100%;height:264px;background:transparent'>
+    </div>
+    <div id='bottomex' style='width:100%;height:162px;background:left top rgb(128, 199, 95)'>
+    </div>
+    <div id='advsex'></div>
+</div>
+</body>
+</html>

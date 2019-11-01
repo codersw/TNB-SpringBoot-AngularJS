@@ -1,0 +1,431 @@
+<#assign base=request.contextPath />
+<#assign stxbase = base+"/static"/>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=11;IE=9;IE=8;IE=7" />
+	<title>首页</title>
+	<link href="${stxbase}/css/common.css" rel="stylesheet" type="text/css" />
+	<link href="${stxbase}/css/wumainmenu.css" rel="stylesheet" type="text/css" />
+	<link href="${stxbase}/css/style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="${stxbase}/js/base.js"></script>
+	<script type="text/javascript" src="${stxbase}/js/common.js"></script>
+	<script type="text/javascript" src="${stxbase}/js/form.js"></script>
+	<script type="text/javascript" src="${stxbase}/js/blockui.js"></script>
+	<script type="text/javascript" src="${stxbase}/js/jquery.SuperSlide.js"></script>
+	<script type="text/javascript" src="${stxbase}/js/jquery.w.js"></script>
+	<script type="text/javascript" src="${stxbase}/js/velocity.min.js"></script>
+</head>
+<body style='background:transparent'>
+<div id='page' style='margin:auto;clear:both;overflow:hidden;position:relative;width:100%;'>
+	<div id='contain' style=' background:transparent;margin:0px auto;padding:0px'>
+		<div id='top' style=' height:688px!important;background:url(${stxbase}/images/top.jpg) left top repeat-x transparent'>
+			<div id='pdv_17292' class='pdv_class'  title='' style='width:100%; height:584px;top:136px;left:0px;  z-index:-1'>
+				<div id='spdv_17292' class='pdv_top' style='overflow:hidden;width:100%;height:100%'>
+					<div class='pdv_border' style='border:0'>
+						<div style="height: 584px">
+							<!---->
+							<div class='con' style="margin-left: 50%; left: -960px; position: relative;">
+								<ul class='html5zoo-slides'>
+									<li>
+										<!--banner-->
+										<a target='_blank' >
+											<img src='${stxbase}/images/1518111335.jpg'>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style='margin:0 auto;position:relative;width:1200px;'>
+				<div id='pdv_17291' class='pdv_class'   style='width:770px;height:99px;top:36px;left:430px; z-index:4'>
+					<div id='spdv_17291' class='pdv_top' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+						<div id="menumain" class="wumainmenu wumainmenu-s0">
+							<div class="bg"></div>
+							<div class="line"></div>
+							<div class="bd">
+								<ul>
+									<li class="n1">
+										<dl><dt>
+											<a href="${base}/font/index" ><span></span>首页 </a>
+										</dt><dd></dd></dl>
+									</li>
+
+									<li class="n2">
+										<dl><dt>
+											<a href="${base}/font/aboutus" ><span></span>关于我们</a>
+										</dt><dd></dd></dl>
+									</li>
+
+									<li class="n3">
+										<dl><dt>
+											<a href="${base}/font/news" ><span></span>新闻中心</a>
+										</dt><dd></dd></dl>
+									</li>
+
+									<li class="n4">
+										<dl><dt>
+											<a href="${base}/font/product" ><span></span>产品展示</a>
+										</dt><dd></dd></dl>
+									</li>
+									<li class="n5">
+										<dl><dt>
+											<a href="${base}/font/leaveword" ><span></span>在线留言</a>
+										</dt><dd></dd></dl>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+						<script>
+                            $(function(){
+                                $("#pdv_17291 dt a span").each(function(){
+                                    var p = $(this).parent().position();
+                                    $(this).css(p);
+                                });
+                                $("#pdv_17291 .n"+parseInt('0')).addClass("cur");
+                                $("#pdv_17291 dd").css("opacity", '0');
+                                if('1' != 1) return;
+                                $("#pdv_17291 dd").each(function(){
+                                    if(this.innerHTML == '') $(this).remove();
+                                });
+
+                                if(getCookie("PLUSADMIN")=="SET"){return false}
+
+                                var plus = {};
+                                var tm;
+                                var cur;
+                                for(var i in plus) {
+                                    plus[i] = $("#pdv_"+plus[i]).size() ? $("#pdv_"+plus[i]) : $(".pdv_class[title="+plus[i]+"]");
+                                    plus[i].hide().hover(function(){
+                                        clearTimeout(tm);
+                                        cur = this;
+                                    }, hide);
+                                    plus[i].children().removeClass("pdv_top");
+                                }
+                                function hide(){
+                                    tm = setTimeout(function(){
+                                        $(cur).hide();
+                                    }, 500);
+                                }
+                                $("#pdv_17291 li").hover(function(){
+                                    clearTimeout(tm);
+                                    $(cur).hide();
+                                    var i = $(this).index()+1;
+                                    if(plus[i]) {
+                                        cur = plus[i].show();
+                                        return;
+                                    }
+                                    $("dd", this).show();
+                                }, function(){
+                                    hide();
+                                    $("dd", this).hide();
+                                });
+                            })
+						</script>
+					</div>
+					</div>
+				</div>
+			</div>
+			<div style='margin:0 auto;position:relative;width:1200px;'>
+				<div id='pdv_17293' class='pdv_class'  title='' style='width:501px;height:33px;top:0px;left:0px; z-index:5'>
+					<div id='spdv_17293' class='pdv_top' style='overflow:hidden;width:100%;height:100%'>
+						<div class='pdv_border'style='border:0'>
+							<span style="line-height:36px;color:#FFF;">${projectConfig.name},咨询电话：${projectConfig.phone}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style='margin:0 auto;position:relative;width:1200px;'>
+				<div id='pdv_17290' class='pdv_class'  title='' style='width:405px;height:73px;top:47px;left:0px; z-index:6'>
+					<div id='spdv_17290' class='pdv_top' style='overflow:hidden;width:100%;height:100%'>
+						<div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
+							<div style="height:25px;margin:1px;display:none;background:;">
+								<div style="float:left;margin-left:6px;line-height:25px;font-weight:bold;color:">
+								</div>
+								<div style="float:right;margin-right:10px;display:none">
+									<a href="-1" style="line-height:25px;color:">更多</a>
+								</div>
+							</div>
+							<div style="padding:0px">
+								<!--logo-->
+								<a href="#">
+									<img src="${stxbase}/images/logo.jpg" border="0" />
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id='content' style='width:1200px;height:1530px;background:transparent;margin:0px auto'>
+
+			<div id='pdv_17273' class='pdv_class'  title='全屏通栏广告背景' style='width:1200px;height:530px;top:434px;left:0px; z-index:3'>
+				<div id='spdv_17273' class='pdv_content' style='overflow:inherit;width:100%;height:100%'><div class='pdv_border' style='border:0'><div class="wuDiyBG" style="position: relative; min-height: 10px; height: 530px;">
+					<div class="bg" style="position: absolute; left:50%; margin-left: -960px;
+ width: 1920px; height: 100%;background-image:url(); background-color:#f2f2f2;background-position:left top; background-repeat: no-repeat;"></div>
+				</div></div>
+				</div>
+			</div>
+			<div id='pdv_17272' class='pdv_class'  title='' style='width:1200px;height:65px;top:460px;left:0px; z-index:7'>
+				<div id='spdv_17272' class='pdv_content' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+					<script>
+						$(function(){
+							if('1' != 1) return;
+							animate("#spdv_17272", {direction: '左', opacity: '1', distance: '200'
+								, rotation: '不旋转', scale: '1', delay: '0', duration: '600', easing: 'swing'});
+						})
+					</script>
+					<!--产品导航图片-->
+					<div class="wupic">
+						<a href="${base}/font/product">
+							<img src="${stxbase}/images/1518112248.jpg" border="0" width="100%" />
+						</a>
+					</div>
+				</div>
+				</div>
+			</div>
+			<div id='pdv_17271' class='pdv_class'  title='' style='width:575px;height:296px;top:92px;left:625px; z-index:8'>
+				<div id='spdv_17271' class='pdv_content' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+					<script>
+						$(function(){
+							if('1' != 1) return;
+							animate("#spdv_17271", {direction: '左', opacity: '1', distance: '200'
+								, rotation: '不旋转', scale: '1', delay: '0', duration: '600', easing: 'swing'});
+						})
+					</script>
+					<div class="wupic">
+						<img src="${base}${aboutUs.cover.filePath}" border="0" width="100%" />
+					</div>
+				</div>
+				</div>
+			</div>
+			<div id='pdv_17270' class='pdv_class'  title='关于我们' style='width:600px;height:295px;top:93px;left:0px; z-index:9'>
+				<div id='spdv_17270' class='pdv_content' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+					<script>
+						$(function(){
+							$("#pdv_17270 .bg").css("opacity", '1');
+
+							if(!1) return;
+							animate("#spdv_17270", {direction: '左', opacity: '1', distance: '200'
+								, rotation: '不旋转', scale: '不变化', delay: '0', duration: '600', easing: 'swing'});
+						});
+					</script>
+					<div class="wuedit">
+						<div class="bg"></div>
+						<div class="con"><p style="color:#707070;font-family:'Microsoft Yahei', Arial, Verdana, sans-serif;background-color:#FFFFFF;">
+							<span style="line-height:3;"><span style="color:#82C75F;"><span style="font-size:24px;"><strong>${projectConfig.name}</strong></span></span></span>
+						</p>
+							<p style="color:#707070;font-family:'Microsoft Yahei', Arial, Verdana, sans-serif;background-color:#FFFFFF;">
+								<span style="line-height:2;">
+									<span style="font-size:14px;">
+										${aboutUs.content}
+									</span>
+								</span>
+							</p></div>
+					</div></div>
+				</div>
+			</div>
+			<div id='pdv_17269' class='pdv_class'  title='' style='width:1200px;height:65px;top:0px;left:0px; z-index:10'>
+				<div id='spdv_17269' class='pdv_content' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+					<script>
+						$(function(){
+							if('1' != 1) return;
+							animate("#spdv_17269", {direction: '左', opacity: '1', distance: '200'
+								, rotation: '不旋转', scale: '1', delay: '0', duration: '600', easing: 'swing'});
+						})
+					</script>
+					<div class="wupic">
+						<a href="${base}/font/aboutus">
+							<img src="${stxbase}/images/1518112057.jpg" border="0" width="100%" />
+						</a>
+					</div>
+				</div>
+				</div>
+			</div>
+			<div id='pdv_17274' class='pdv_class'  title='最新产品' style='width:1200px;height:408px;top:534px;left:0px; z-index:11'>
+				<div id='spdv_17274' class='pdv_content' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+					<script type="text/javascript">
+						$(document).ready(function() {
+							var blw=$("#myscrollbox li").width();
+							//获取单个子元素所需宽度
+							var liArr = $("#myscrollbox ul").children("li");
+							//获取子元素数量
+							var mysw = $("#myscroll").width();
+							//获取子元素所在区域宽度
+							var mus = parseInt(mysw/blw);
+							//计算出需要显示的子元素的数量
+							var length = liArr.length-mus;
+							//计算子元素可移动次数（被隐藏的子元素数量）
+							var i=0
+							$("#right").click(function(){
+								i++
+								//点击i加1
+								if(i<length){
+									$("#myscrollbox").css("left",-(blw*i));
+									//子元素集合向左移动，距离为子元素的宽度乘以i。
+								}else{
+									i=length;
+									$("#myscrollbox").css("left",-(blw*length));
+									//超出可移动范围后点击不再移动。最后几个隐藏的元素显示时i数值固定位已经移走的子元素数量。
+								}
+							});
+							$("#left").click(function(){
+								i--
+								//点击i减1
+								if(i>=0){
+									$("#myscrollbox").css("left",-(blw*i));
+									//子元素集合向右移动，距离为子元素的宽度乘以i。
+								}else{
+									i=0;
+									$("#myscrollbox").css("left",0);
+									//超出可移动范围后点击不再移动。最前几个子元素被显示时i为0。
+								}
+							});
+						});
+					</script>
+					<div class="container demo-2" >
+						<div class="scrollpic">
+							<div id="mybtns"> <a href="javascript:;" id="right"></a><a href="javascript:;" id="left"></a>  </div>
+							<div id="myscroll">
+								<div id="myscrollbox">
+									<ul>
+										<#if productList?exists>
+											<#list productList as product>
+												<li>
+													<a href="${base}/font/detail/${product.id}">
+														<img src="${base}${product.cover.filePath}" width="260" height="290" />
+														<span class="intro">
+														  <h5>${product.title}</h5>
+															<p>${product.title}详情...</p>
+														</span>
+													</a>
+												</li>
+											</#list>
+										</#if>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			<div id='pdv_17275' class='pdv_class'  title='' style='width:1200px;height:65px;top:990px;left:0px; z-index:12'>
+				<div id='spdv_17275' class='pdv_content' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+					<script>
+						$(function(){
+							if('1' != 1) return;
+							animate("#spdv_17275", {direction: '左', opacity: '1', distance: '200'
+								, rotation: '不旋转', scale: '1', delay: '0', duration: '600', easing: 'swing'});
+						})
+					</script>
+					<div class="wupic">
+						<a href="${base}/font/news"><img src="${stxbase}/images/1518163993.jpg" border="0" width="100%" /></a>
+					</div>
+				</div>
+				</div>
+			</div>
+			<div id='pdv_17276' class='pdv_class'  title='最新文章' style='width:1200px;height:464px;top:1064px;left:0px; z-index:13'>
+				<div id='spdv_17276' class='pdv_content' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+					<div class="c_news_list-51002">
+						<div class="content-list clearfix" >
+							<#if newsList?exists>
+								<#list newsList as news>
+									<div class="content-info">
+										<a href="${base}/font/detail/${news.id}" title="${news.title}" style="padding:0px;margin:0px">
+											<figure style="width:280px;padding:0px;margin:0px">
+												<img src="${base}${news.cover.filePath}" class="js_thumb" />
+											</figure>
+											<figcaption style="padding:0px;margin:0px">${news.title}</figcaption>
+											<div class="content-text">
+												<div class="content-wr">
+													<h3>${news.title}</h3>
+													<p class="time">${news.createDate?string("yyyy-MM-dd")}</p>
+													${news.content?substring(0,30)}
+													<span>了解详情 &gt;&gt;</span>
+												</div>
+											</div>
+										</a>
+									</div>
+								</#list>
+							</#if>
+						</div>
+					</div>
+					<script>
+						$(function(){
+							if('0' != 1) return;
+							animate("#spdv_17276", {direction: '上', opacity: '1', distance: '200'
+								, rotation: '不旋转', scale: '不变化', delay: '0', duration: '600', easing: 'swing'});
+						})
+					</script></div>
+				</div>
+			</div>
+		</div>
+		<div id='bottom' style='width:1200px;height:135px;background:left top rgb(128, 199, 95)'>
+			<div id='pdv_17846' class='pdv_class'  title='脚注信息' style='width:1200px;height:95px;top:38px;left:0px; z-index:2'>
+				<div id='spdv_17846' class='pdv_bottom' style='overflow:hidden;width:100%;height:100%'>
+					<div class='pdv_border' style='border:0'>
+						<span style="font-size:14px;line-height:1.5;color:#FFFFFF;">
+							<p style="text-align:center;">
+								<span style="color:#FFFFFF;font-size:14px;">地址: ${projectConfig.address} 电话：${projectConfig.phone} 邮箱：${projectConfig.email}</span>
+							</p>
+							<div>
+								<p style="text-align:center;">
+									<span style="color:#FFFFFF;font-size:14px;">${projectConfig.content}</span>
+								</p>
+							</div>
+							<div style="text-align:center;">
+							</div>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div id='pdv_17844' class='pdv_class'  title='' style='width:60px;height:60px;top:45px;left:854px; z-index:14'>
+				<div id='spdv_17844' class='pdv_bottom' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+					<script>
+						$(function(){
+							if('1' != 1) return;
+							animate("#spdv_17844", {direction: '下', opacity: '1', distance: '200'
+								, rotation: '不旋转', scale: '1', delay: '0', duration: '600', easing: 'swing'});
+						})
+					</script>
+				</div>
+				</div>
+			</div>
+			<div id='pdv_17845' class='pdv_class'  title='友情链接' style='width:1198px;height:42px;top:0px;left:2px; z-index:15'>
+				<div id='spdv_17845' class='pdv_bottom' style='overflow:hidden;width:100%;height:100%'><div class='pdv_border' style='border:0'>
+					<ul style="display:table;margin:10px auto;">
+						<li style="color:#fff;list-style-type:none;text-align:center;float:left;*float:none;*display:inline;*zoom:1;font-size:14px;line-height:28px;height:28px;">
+							友情链接：
+						</li>
+						<#if friendLinkList?exists>
+							<#list friendLinkList as friendLink>
+								<li style="list-style-type:none;text-align:center;float:left;*float:none;*display:inline;*zoom:1;margin-right:20px;height:28px;">
+									<a href="${friendLink.link}" target="_self" style="color:#fff;
+										font-size:14px;line-height:28px;">${friendLink.name}</a>
+								</li>
+							</#list>
+						</#if>
+					</ul>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id='bodyex'>
+	</div>
+	<div id='topex' style='width:100%;height:722px;background:url(${stxbase}/images/top.jpg) left top repeat-x transparent'>
+	</div>
+	<div id='contentex' style='display:none;width:100%;height:1530px;background:transparent'>
+	</div>
+	<div id='bottomex' style='width:100%;height:135px;background:left top rgb(128, 199, 95)'>
+	</div>
+	<div id='advsex'></div>
+</div>
+</body>
+</html>
