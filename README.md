@@ -1,5 +1,5 @@
-# 基于springboot 1.5、 angular的xxx项目网站
-  下载后可直接发布使用,所有图片文章都可后台配置。<br>
+# 基于springboot 1.5、 angularjs的xxx项目网站
+  clone后可直接发布使用,所有图片文章都可后台配置。<br>
   前台地址: http://localhost/project/font <br>
   后台地址: http://localhost/project/admin <br>
 # 预览
