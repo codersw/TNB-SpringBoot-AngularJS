@@ -117,7 +117,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>4.3.10.RELEASE</version>
+            <version>5.3.18</version>
         </dependency>
         <!--热部署+html修改无需make自动刷新-->
         <dependency>
